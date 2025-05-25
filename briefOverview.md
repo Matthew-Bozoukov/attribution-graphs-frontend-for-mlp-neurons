@@ -77,4 +77,26 @@ function render() {
     document.title = 'Attribution Graph: ' + m.prompt
 }
 ```
+
 ## initCg:
+The initCg (probably standing for init color graph or some other shit) function is also a key part of the pipeline, being held in `init-cg.js`, and is used practically everywhere that a graph is being rendered. It is mad long so I can't do the same part by part dissection, but I can make a really simple skeleton version.
+```javascript
+var data = // get the json of the specific graph requested
+var visState = // a lot of state variables
+
+precautionaryChecksForVariables()
+util.Cg.formatData(data, visState) // another custom function
+var renderAll = util.initRenderAll(params) // another custom function for customizable rendering
+colorNodes() // created function to set each colors node to a default white
+colorLinks() // created function to color and size the connection between nodes
+renderAll.objectParamsUpdates() // dynamically pushing any necessary data to the renderAll array params
+connectedLinks.forEach(/* set some link info based on the link's data*/)
+data.nodes.forEach(/* setting node links */)
+data.features.forEach(/* setting feature links */)
+initGridSnap() // inits both some gridsnap data and a selection div for the option
+
+renderAll.callAll() // calls basically every single renderAll function
+```
+A lot of the code within the function makes absolutely no sense if you don't understand what initRenderAll and the returned object do.
+
+## initRenderAll:
