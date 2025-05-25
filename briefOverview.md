@@ -99,4 +99,6 @@ renderAll.callAll() // calls basically every single renderAll function
 ```
 `initRenderAll()` is contained within util.js and just creates an object that contains a bunch of event labels, with the strings given to the function defining those event labels. These each then trigger a function (which is defined within the `renderAll.funcUpdates()` section of the simplification) when that specific event tied to the visState of the site occurs.
 
+The corresponding rendering code is defined within util.js under a bunch of sub functions but a simple example lies within ggPlot().
+
 # Other Files:
