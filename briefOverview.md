@@ -86,10 +86,10 @@ var visState = // a lot of state variables
 
 precautionaryChecksForVariables()
 util.Cg.formatData(data, visState) // another custom function
-var renderAll = util.initRenderAll(params) // another custom function for customizable rendering
+var renderAll = util.initRenderAll(params) // another custom function for customizable rendering and event calls
 colorNodes() // created function to set each colors node to a default white
 colorLinks() // created function to color and size the connection between nodes
-renderAll.objectParamsUpdates() // dynamically pushing any necessary data to the renderAll array params
+renderAll.funcUpdates() // dynamically pushing any necessary data to the renderAll event functions
 connectedLinks.forEach(/* set some link info based on the link's data*/)
 data.nodes.forEach(/* setting node links */)
 data.features.forEach(/* setting feature links */)
@@ -97,6 +97,6 @@ initGridSnap() // inits both some gridsnap data and a selection div for the opti
 
 renderAll.callAll() // calls basically every single renderAll function
 ```
-A lot of the code within the function makes absolutely no sense if you don't understand what initRenderAll and the returned object do.
+`initRenderAll()` is contained within util.js and just creates an object that contains a bunch of event labels, with the strings given to the function defining those event labels. These each then trigger a function (which is defined within the `renderAll.funcUpdates()` section of the simplification) when that specific event tied to the visState of the site occurs.
 
-## initRenderAll:
+# Other Files:
