@@ -1,4 +1,4 @@
-## index.html:
+# index.html:
 Everything in the site is rendered through [D3](https://d3js.org/), a tool to create graphics and SVGs with raw javascript. The main logic runs through index.html and the rest of the files are callled through it, so just focus on the HTML file if you want a basic understanding of whats called. Almost all of the imports in the HTML file are just for styles or example data and the only set of things you need to worry about are the library imports and the file imports. 
 ```html
 <!-- Library Imports (with the libraries being held on their own site for some reason) -->
@@ -100,5 +100,14 @@ renderAll.callAll() // calls basically every single renderAll function
 `initRenderAll()` is contained within util.js and just creates an object that contains a bunch of event labels, with the strings given to the function defining those event labels. These each then trigger a function (which is defined within the `renderAll.funcUpdates()` section of the simplification) when that specific event tied to the visState of the site occurs.
 
 The corresponding rendering code is defined within util.js under a bunch of sub functions but a simple example lies within ggPlot().
+
+# init-cg-clerp-list.js:
+I'm assuming this file is what handles the neuron rendering because every other file does not relate to anything to do with neurons. It also has a couple Label and Node selection functions and also has some arrays for "features", so I'm just going to assume. It's a mad small file, so a lot of the underlying functionality legit just comes down to the file it gets handed.
+
+All that the function uses from the data are the prompt_tokens and the features. The rest of the function sets up the selection menus for both and formats the data itself to be rendered within renderAll.
+```javascript
+const tokenValues = data.metadata.prompt_tokens;
+const featureById = d3.group(data.features, d => d.featureId);
+```
 
 # Other Files:
